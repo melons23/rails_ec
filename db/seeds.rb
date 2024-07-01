@@ -6,3 +6,21 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+# product = Product.create(
+#   name: 'テスト商品234',
+#   price: '150',
+#   description: 'テストテスト'
+# )
+# product.image.attach(io: File.open(Rails.root.join('app/assets/images/doubutu_penguin.png')),
+#                   filename: 'doubutu_penguin.png')
+
+
+100.times do |n|
+  product = Product.create(
+    name: "商品#{n}",
+    price: rand(100..1500),
+    description: 'テストデータです'
+  ) 
+  product.image.attach(io: File.open(Rails.root.join('app/assets/images/hourensou.jpg')),
+                    filename: 'hourensou.jpg')
+end
