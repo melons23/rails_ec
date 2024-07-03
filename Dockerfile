@@ -14,8 +14,8 @@ RUN apt-get update -qq && \
   libpq-dev \
   postgresql-client \
   && apt-get clean \
-  && rm -rf /var/lib/apt/lists/* \
-
+  && rm -rf /var/lib/apt/lists/* 
+  
 RUN mkdir /myapp
 WORKDIR /myapp
 
