@@ -5,8 +5,6 @@ services:
     volumes:
       - db:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=myapp_development
-      - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
   web:
     build: .
