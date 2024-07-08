@@ -15,12 +15,12 @@
 #                   filename: 'doubutu_penguin.png')
 
 
-100.times do |n|
+4.times do |n|
   product = Product.create(
-    name: "商品#{n}",
+    name: "花束#{n + 1}",
     price: rand(100..1500),
-    description: 'テストデータです'
+    description: 'プレゼントに最適です。'
   ) 
-  product.image.attach(io: File.open(Rails.root.join('app/assets/images/hourensou.jpg')),
-                    filename: 'hourensou.jpg')
+  product.image.attach(io: File.open(Rails.root.join("app/assets/images/flower_#{n + 1}.jpg")),
+                    filename: "flower_#{n + 1}.jpg")
 end

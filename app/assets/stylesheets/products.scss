@@ -1,4 +1,5 @@
-.product_image{
-  max-width: 100%;
-  height: auto;
+.card-img-top{
+  width: 206px; /* 表示したい幅 */
+  height: 137px; /* 表示したい高さ */
+  overflow: hidden; /* サイズを超える場合には隠す */
 }
