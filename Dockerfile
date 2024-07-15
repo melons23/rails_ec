@@ -10,11 +10,12 @@ RUN ln -fs /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm \
 
 RUN apt-get update -qq && \
   apt-get install -y build-essential \
+  -y vim \
   libpq-dev \
   postgresql-client \
   && apt-get clean \
-  && rm -rf /var/lib/apt/lists/*
-
+  && rm -rf /var/lib/apt/lists/* 
+  
 RUN mkdir /myapp
 WORKDIR /myapp
 
@@ -25,6 +26,7 @@ RUN bundle install
 
 COPY package.json yarn.lock ./
 RUN yarn install
+
 
 COPY . /myapp
 

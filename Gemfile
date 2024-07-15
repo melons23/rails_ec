@@ -32,6 +32,13 @@ gem 'cssbundling-rails'
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem 'jbuilder'
 
+# 画像分析 / 画像解析
+gem 'image_processing', ">= 1.2"
+
+gem 'aws-sdk-s3', '~> 1.2'
+
+gem 'kaminari'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
@@ -47,6 +54,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
 
+gem 'sassc-rails'
 # Use Sass to process CSS
 # gem "sassc-rails"
 
@@ -58,6 +66,9 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
   gem 'rspec-rails'
+  gem 'rubocop', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
 end
 
 group :development do
@@ -70,6 +81,8 @@ group :development do
   gem 'rubocop-rspec', require: false
   gem 'web-console'
 
+  # 2024/06 以下追加gem
+  gem 'pry-byebug'
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
