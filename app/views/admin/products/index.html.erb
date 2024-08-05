@@ -1,0 +1,41 @@
+<% content_for :css do %>
+  <%= stylesheet_link_tag 'admin/products/index' %>
+<% end %>
+<body>
+  <div class="container-fluid px-4 d-flex justify-content-center">
+    <div class="card mb-4 col-md-8">
+      <div class="card-header d-flex align-items-center justify-content-between">
+        <h2>商品一覧</h2>
+        <div class="">
+          <%= link_to "新規商品登録", new_admin_product_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+      <div class="card-body">
+        <%= search_form_for @q, class: 'd-flex mb-4', url: admin_products_path do |f| %>
+          <%= f.search_field :id_or_name_cont, class: 'form-control mr-2', placeholder: '検索ワード (ID、商品名で検索が可能です)' %>
+          <%= f.submit '検索', class: 'btn btn-primary' %>
+        <% end %>
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="col">ID</th>
+              <th class="col-md-1">商品写真</th>
+              <th class="col-md-2">商品名</th>
+              <th class="col-md-3">商品説明</th>
+              <th class="col">値段</th>
+              <th class="col">更新日時</th>
+              <th class="col-md-1">編集</th>
+              <th class="col">削除</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @products.each do |product| %>
+              <%= render 'admin/products/product_row', product: product %>
+            <% end %>
+          </tbody>
+        </table>
+        <%= paginate @products %>
+      </div>
+    </div>
+  </div>
+</body>

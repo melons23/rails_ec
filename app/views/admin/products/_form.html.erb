@@ -1,0 +1,20 @@
+<%= form_with(model: product, id: 'product_form', local: true, url: form_url) do |f| %>
+  <%= render 'layouts/error_message', model: f.object %>
+  <div class="mb-3">
+    <%= f.label :name, "商品名", {class:"form-label"} %> <span class="badge bg-danger">必須</span>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :price, "単価", {class:"form-label"} %> <span class="badge bg-danger">必須</span>
+    <%= f.number_field :price, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :description, "説明", {class:"form-label"} %>
+    <%= f.text_area :description, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :image, "画像", class: "form-label" %>
+    <%= f.file_field :image, class: "form-control", id: 'image'%>
+  </div>
+  <%= f.submit submit_text, class:'btn btn-primary mt-3' %>
+<% end %>

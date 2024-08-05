@@ -39,6 +39,8 @@ gem 'aws-sdk-s3', '~> 1.2'
 
 gem 'kaminari'
 
+gem 'bootstrap', '~> 5.3.0'
+gem 'jquery-rails'
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
@@ -55,6 +57,10 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'bootsnap', require: false
 
 gem 'sassc-rails'
+
+gem 'ransack'
+
+gem 'rails-i18n'
 # Use Sass to process CSS
 # gem "sassc-rails"
 

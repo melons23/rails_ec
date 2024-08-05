@@ -1,3 +1,3 @@
 //= link_tree ../images
 //= link_tree ../builds
-//= link products.css
+//= link admin/products/index.css

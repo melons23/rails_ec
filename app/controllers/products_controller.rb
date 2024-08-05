@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
 
-    @related_products = Product.where.not(id: @product.id).with_attached_image.limit(4).order(created_at: "DESC")
+    @related_products = Product.where.not(id: @product.id).order('created_at desc').with_attached_image.limit(4)
   end
 
   private
