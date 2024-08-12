@@ -1,0 +1,15 @@
+<tr>
+  <th scope="row"><%= product.id %></th>
+  <% if product.image.present? %>
+    <td><%= image_tag product.image, class:"product-image" %></td>
+  <% else %>
+    <td><%= image_tag 'https://dummyimage.com/450x300/dee2e6/6c757d.jpg', class:"product-image" %></td>
+  <% end %>
+  <td><%= product.name %></td>
+  <td><%= product.description %></td>
+  <td><%= product.price %>円</td>
+  <td><%= l product.updated_at %></td>
+  <td><%= link_to "編集", edit_admin_product_path(product.id), class: "btn btn-primary" %></td>
+  <td><%= link_to '削除', admin_product_path(product.id), class: "btn btn-danger", data: { turbo_method: :delete, turbo_confirm: "本当に削除してよろしいですか？" } %></td>
+</tr>
+ 

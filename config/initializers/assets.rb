@@ -12,7 +12,13 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules/bootstrap
 # scss個別読み込み設定
 Rails.application.config.assets.precompile += %w(
     products.scss
+    admin/products/*
  )
+
+Rails.application.config.assets.precompile += %w(bootstrap.min.js popper.js)
+
+# a)で"bootstap.min.js"ではなく、"bootsrap.js"と書いた場合は、こちらも同じに直す
+
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
