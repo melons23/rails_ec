@@ -18,11 +18,14 @@
           <p class="lead">
             <%= @product.description %>
           </p>
-          <div class="d-flex">
-            <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-            <button class="btn btn-outline-dark flex-shrink-0" type="button">
-              <i class="bi-cart-fill me-1"></i>Add to cart
-            </button>
+          <div>
+            <%= form_with url: carts_path, model: @product, class: 'd-flex', method: :post, local: true do |form| %>
+              <%= form.text_field :id ,class: 'd-none' %>
+              <%= form.number_field :quantity , class: 'form-control text-center me-3', value: 1, style: 'max-width: 5rem' %>
+              <%= button_tag type: "submit", class: "btn btn-outline-dark flex-shrink" do %>
+                <i class="bi-cart-fill me-1"></i> Add to cart
+              <% end %>
+            <% end %>
           </div>
         </div>
       </div>

@@ -3,7 +3,10 @@
 class ApplicationController < ActionController::Base
   before_action :basic_auth, if: :admin_url
 
+  helper_method :current_cart, :total_quantity
+
   private
+
   def basic_auth
     authenticate_or_request_with_http_basic do |username, password|
       username == ENV['BASIC_AUTH_USER'] && password == ENV['BASIC_AUTH_PASSWORD']
@@ -14,4 +17,19 @@ class ApplicationController < ActionController::Base
     request.fullpath.include?('/admin')
   end
 
+  def current_cart
+    if session[:cart_id]
+      @cart = Cart.find(session[:cart_id])
+    else
+      @cart = Cart.create
+      session[:cart_id] = @cart.id
+    end
+
+    @cart
+  end
+
+  def total_quantity
+    cart = current_cart
+    @total_quantity = CartItem.where(cart_id: cart.id).sum(:quantity)
+  end
 end

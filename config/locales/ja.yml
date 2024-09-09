@@ -1,4 +1,14 @@
 ja:
+  number:
+    currency:
+      format:
+        delimiter: ","
+        format: "%n%u"
+        precision: 0
+        separator: "."
+        significant: false
+        strip_insignificant_zeros: false
+        unit: 円
   activerecord:
     models:
       product: 商品
@@ -21,3 +31,8 @@ ja:
     create_error: "商品登録に失敗しました。"
     edit_error: "商品更新に失敗しました。"
     delete_error: "商品削除に失敗しました。"
+  cart:
+    create: "カートに商品を追加しました。"
+    delete: "カートから商品を削除しました。"
+    create_error: "カート商品登録に失敗しました。"
+    delete_error: "カート商品削除に失敗しました。"
