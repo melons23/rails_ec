@@ -13,6 +13,10 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: ${{ github.event.pull_request.head.sha }}
+      - name: Create .env file
+        run: |
+          echo "BASIC_AUTH_USER=${{ secrets.BASIC_AUTH_USER }}" >> .env
+          echo "BASIC_AUTH_PASSWORD=${{ secrets.BASIC_AUTH_PASSWORD }}" >> .env
       - name: run htmlbeautifier on docker-compose
         run: |
           docker compose build
