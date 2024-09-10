@@ -12,7 +12,7 @@ class CartsController < ApplicationController
     @cart_items = CartItem.create(product_params)
 
     if @cart_items.save
-      redirect_to request.referer, notice: I18n.t('cart.delete')
+      redirect_to request.referer, notice: I18n.t('cart.create')
     else
       redirect_to product_path(params[:product][:id]), danger: I18n.t('cart.create_error')
     end
