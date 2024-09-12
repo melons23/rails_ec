@@ -29,7 +29,6 @@ class ApplicationController < ActionController::Base
   end
 
   def total_quantity
-    cart = current_cart
-    @total_quantity = CartItem.where(cart_id: cart.id).sum(:quantity)
+    @total_quantity = current_cart.cart_items.sum(:quantity)
   end
 end

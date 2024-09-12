@@ -19,8 +19,9 @@ class CartsController < ApplicationController
   end
 
   def destroy
-    @cart_items = CartItem.joins(:product)
-                          .where(cart_id: current_cart.id, product_id: params[:id])
+    @cart_items = current_cart.cart_items
+                              .joins(:product)
+                              .where(cart_id: current_cart.id, product_id: params[:id])
 
     if @cart_items.destroy_all
       redirect_to carts_path, notice: I18n.t('cart.delete')
@@ -37,19 +38,18 @@ class CartsController < ApplicationController
   end
 
   def cart_items
-    CartItem.select('products.id AS product_id,
+    current_cart.cart_items.select('products.id AS product_id,
                         MAX(cart_items.created_at) AS created_at,
                         products.name AS name, MAX(products.price) AS price,
                         SUM(cart_items.quantity) AS item_total')
-            .joins(:product)
-            .where(cart_id: current_cart.id)
-            .group('products.id, products.name')
-            .order('created_at desc')
+                .joins(:product)
+                .group('products.id, products.name')
+                .order('created_at desc')
   end
 
   def calculate_total
-    CartItem.joins(:product)
-            .where(cart_id: current_cart.id)
-            .sum('cart_items.quantity * products.price')
+    current_cart.cart_items
+                .joins(:product)
+                .sum('cart_items.quantity * products.price')
   end
 end
