@@ -20,9 +20,13 @@
       </div>
       <!-- Product actions-->
       <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-        <div class="text-center">
-          <a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
-        </div>
+        <%= form_with url: carts_path, model: product, class: 'text-center', method: :post, local: true do |form| %>
+          <%= form.text_field :id ,class: 'd-none' %>
+          <%= form.number_field :quantity , class: 'form-control text-center me-3 d-none', value: 1, style: 'max-width: 3rem' %>
+          <%= button_tag type: "submit", class: "btn btn-outline-dark flex-shrink" do %>
+            <i class="bi-cart-fill me-1"></i> Add to cart
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>

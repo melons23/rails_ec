@@ -1,0 +1,17 @@
+<% cart_items.each do |cart_item| %>
+  <li class="list-group-item d-flex align-items-center justify-content-between">
+    <div class="d-flex align-items-center">
+      <% if cart_item.product.image.present? %>
+        <%= link_to image_tag(cart_item.product.image, class: "card-img-top", size: "150x100", alt: cart_item.name) %>
+      <% else %>
+        <%= image_tag 'https://dummyimage.com/150x100/dee2e6/6c757d.jpg', size: "150x100", alt: 'Default Image' %>
+      <% end %>
+      <div class="ms-3">
+        <h6 class="my-0 fw-bold"><%= cart_item.name %></h6>
+        <span class="text-body-secondary"></span><%= number_to_currency(cart_item.price) %></span> ×
+      <small class="text-muted"><%= cart_item.item_total %></small><br>
+    </div>
+  </div>
+  <%= link_to "削除", cart_path(cart_item.product_id), class: 'btn btn-sm btn-danger', data: { turbo_method: :delete } %>
+</li>
+<% end %>
